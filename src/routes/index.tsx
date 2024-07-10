@@ -3,9 +3,9 @@ import LiveVoyageData from "~/components/LiveVoyageData";
 import VesselStats from "~/components/VesselStats";
 import TrackedAssets from "~/components/TrackedAssets";
 import AlertsNotifications from "~/components/AlertsNotifications";
-import ShipIconL from "../icons/ShipIcon-1.svg";
-import ShipIconR from "../icons/ShipIcon-2.svg";
-import ShipIconLarge from "../icons/ShipIcon-3.svg";
+import IconTugBoat from "../icons/icon-tug-boat.svg";
+import IconShip from "../icons/icon-ship.svg";
+import IconBarge from "../icons/icon-barge.svg";
 import ActiveBarges from "~/components/ActiveBarges";
 import Rates from "~/components/Rates";
 import TitleStatus from "~/components/TitleStatus";
@@ -53,20 +53,20 @@ export default function Home() {
                   className={"mb-4 flex-1"}
                   label="Active tugs"
                   count={30}
-                  icon={ShipIconL}
+                  icon={IconTugBoat}
                 />
                 <VesselStats
                   className={"flex-1"}
                   label="Active ships"
                   count={2}
-                  icon={ShipIconR}
+                  icon={IconShip}
                 />
               </div>
               <div class="basis-7/12">
                 <ActiveBarges
                   label={"Active barges"}
                   count={30}
-                  icon={ShipIconLarge}
+                  icon={IconBarge}
                 />
               </div>
             </div>
