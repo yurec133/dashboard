@@ -30,7 +30,7 @@ const ActiveBarges: Component<ActiveBargesProps> = ({ data, label, icon }) => {
           <img class="inline-block" src={icon} alt="Ship Icon" />
         </div>
       </div>
-      <div class="mb-10">{label}</div>
+      <div class="mb-20">{label}</div>
       <div class="flex flex-row space-x-4">
         <div class="basis-6/12">
           <ul class="list-none">
