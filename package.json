@@ -1,11 +1,12 @@
 {
-  "name": "example-basic",
+  "name": "dashboard",
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",
     "build": "vinxi build",
     "startDemo": "vinxi start",
-    "version": "vinxi version"
+    "version": "vinxi version",
+    "start": "node ./.output/server/index.mjs"
   },
   "dependencies": {
     "@solidjs/meta": "^0.29.4",
