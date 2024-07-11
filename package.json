@@ -5,8 +5,7 @@
     "dev": "vinxi dev",
     "build": "vinxi build",
     "startDemo": "vinxi start",
-    "version": "vinxi version",
-    "start": "node ./.output/server/index.mjs"
+    "version": "vinxi version"
   },
   "dependencies": {
     "@solidjs/meta": "^0.29.4",

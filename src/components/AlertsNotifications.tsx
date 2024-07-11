@@ -2,7 +2,7 @@ import { Component } from "solid-js";
 
 const AlertsNotifications: Component = () => {
   return (
-    <div class="border border-orangeCustom200 bg-orangeCustom100 p-4 rounded-2xl">
+    <div class="border border-orangeCustom200 bg-orangeCustom100 p-4 rounded-2xl h-full">
       <div class="text-6xl font-bold text-slateCustom700 mb-5">
         Alerts & Notifications
       </div>
