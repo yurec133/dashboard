@@ -58,7 +58,7 @@ const Dashboard: Component = () => {
         <Loader />
       ) : (
         data() && (
-          <div class="border border-grayCustom400 px-8 py-12">
+          <div class="border border-grayCustom400 px-8 py-12" style={{width: "2515px"}}>
             <TitleStatus />
             <div class="flex flex-row space-x-4 mb-4">
               <div class="basis-6/12 flex-1">

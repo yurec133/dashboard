@@ -15,7 +15,7 @@ const VesselStats: Component<VesselStatsProps> = ({
 }) => {
   return (
     <div
-      class={`border border-blueCustom300 bg-skyCustom200 p-4 rounded-2xl ${className}`}
+      class={`border border-blueCustom300 bg-skyCustom200 p-8 rounded-2xl ${className}`}
     >
       <div class="flex flex-row space-x-4 mb-2 items-center">
         <div class="basis-5/12">

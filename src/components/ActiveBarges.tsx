@@ -21,7 +21,7 @@ const ActiveBarges: Component<ActiveBargesProps> = ({ data, label, icon }) => {
   }: MockData = data;
 
   return (
-    <div class="border border-grayCustom500 bg-grayCustom200 p-4 rounded-2xl text-6xl h-full">
+    <div class="border border-grayCustom500 bg-grayCustom200 p-8 rounded-2xl text-6xl h-full">
       <div class="flex flex-row space-x-4 mb-2 items-center">
         <div class="basis-5/12">
           <div class="text-9xl">{active_barges}</div>
@@ -34,10 +34,10 @@ const ActiveBarges: Component<ActiveBargesProps> = ({ data, label, icon }) => {
       <div class="flex flex-row space-x-4">
         <div class="basis-6/12">
           <ul class="list-none">
-            <li class="mb-3">
+            <li class="mb-8">
               <span class="font-bold mr-4">{loaded_barges}</span>Loaded
             </li>
-            <li class="mb-3">
+            <li class="mb-8">
               <span class="font-bold mr-4">{barges_loading}</span>Loading
             </li>
             <li>
@@ -47,7 +47,7 @@ const ActiveBarges: Component<ActiveBargesProps> = ({ data, label, icon }) => {
         </div>
         <div class="basis-6/12">
           <ul class="list-none">
-            <li class="mb-3">
+            <li class="mb-8">
               <span class="font-bold mr-4">{barges_fleeting}</span>Fleeting
             </li>
             <li>
