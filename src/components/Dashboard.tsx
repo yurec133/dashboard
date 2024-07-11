@@ -49,63 +49,62 @@ const Dashboard: Component = () => {
     requestAnimationFrame(calculateHeight);
   });
 
-  const memoizedData = createMemo(() => data());
-
   return (
     <>
       <ButtonLoad name={"Load Dashboard"} onClick={loadData} />
       {loading() ? (
         <Loader />
       ) : (
-        data() && (
-          <div class="border border-grayCustom400 px-8 py-12" style={{width: "2515px"}}>
-            <TitleStatus />
-            <div class="flex flex-row space-x-4 mb-4">
-              <div class="basis-6/12 flex-1">
-                <div ref={blockRef} class="mb-4">
-                  <LiveVoyageData
-                    data={memoizedData()}
-                    label={"Scheduled voyages"}
-                    labelActive={"Active voyages"}
+        <div
+          class="border border-grayCustom400 px-8 py-12"
+          style={{ width: "2515px" }}
+        >
+          <TitleStatus />
+          <div class="flex flex-row space-x-4 mb-4">
+            <div class="basis-6/12 flex-1">
+              <div ref={blockRef} class="mb-4">
+                <LiveVoyageData
+                  data={data()}
+                  label={"Scheduled voyages"}
+                  labelActive={"Active voyages"}
+                />
+              </div>
+              <div
+                class="flex flex-row space-x-4 flex-1"
+                style={{ "min-height": `calc(100% - ${height()}px)` }}
+              >
+                <div class="basis-5/12 items-stretch flex flex-col">
+                  <VesselStats
+                    className={"mb-4 flex-1"}
+                    label="Active tugs"
+                    count={data()?.active_tugs ?? 0}
+                    icon={IconTugBoat}
+                  />
+                  <VesselStats
+                    className={"flex-1"}
+                    label="Active ships"
+                    count={data()?.active_ships ?? 0}
+                    icon={IconShip}
                   />
                 </div>
-                <div
-                  class="flex flex-row space-x-4 flex-1"
-                  style={{ "min-height": `calc(100% - ${height()}px)` }}
-                >
-                  <div class="basis-5/12 items-stretch flex flex-col">
-                    <VesselStats
-                      className={"mb-4 flex-1"}
-                      label="Active tugs"
-                      count={data()?.active_tugs ?? 0}
-                      icon={IconTugBoat}
-                    />
-                    <VesselStats
-                      className={"flex-1"}
-                      label="Active ships"
-                      count={data()?.active_ships ?? 0}
-                      icon={IconShip}
-                    />
-                  </div>
-                  <div class="basis-7/12">
-                    <ActiveBarges
-                      data={memoizedData()}
-                      label={"Active barges"}
-                      icon={IconBarge}
-                    />
-                  </div>
+                <div class="basis-7/12">
+                  <ActiveBarges
+                    data={data()}
+                    label={"Active barges"}
+                    icon={IconBarge}
+                  />
                 </div>
               </div>
-              <div class="basis-3/12 flex-1">
-                <Rates data={memoizedData()} />
-              </div>
-              <div class="basis-3/12 flex-1">
-                <AlertsNotifications />
-              </div>
             </div>
-            <TrackedAssets data={memoizedData()} />
+            <div class="basis-3/12 flex-1">
+              <Rates data={data()} />
+            </div>
+            <div class="basis-3/12 flex-1">
+              <AlertsNotifications />
+            </div>
           </div>
-        )
+          <TrackedAssets data={data()} />
+        </div>
       )}
     </>
   );

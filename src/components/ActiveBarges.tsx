@@ -7,18 +7,25 @@ interface ActiveBargesProps {
   data: MockData | null;
 }
 
+const DataItem: Component<{ value: number; label: string }> = ({
+  value,
+  label,
+}) => (
+  <li class="mb-8">
+    <span class="font-bold mr-4">{value}</span>
+    {label}
+  </li>
+);
+
 const ActiveBarges: Component<ActiveBargesProps> = ({ data, label, icon }) => {
-  if (!data) {
-    return null;
-  }
   const {
-    barges_fleeting,
-    barges_loading,
-    barges_unloading,
-    empty_barges,
-    loaded_barges,
-    active_barges,
-  }: MockData = data;
+    barges_fleeting = 0,
+    barges_loading = 0,
+    barges_unloading = 0,
+    empty_barges = 0,
+    loaded_barges = 0,
+    active_barges = 0,
+  } = data ?? ({} as MockData);
 
   return (
     <div class="border border-grayCustom500 bg-grayCustom200 p-8 rounded-2xl text-6xl h-full">
@@ -34,25 +41,15 @@ const ActiveBarges: Component<ActiveBargesProps> = ({ data, label, icon }) => {
       <div class="flex flex-row space-x-4">
         <div class="basis-6/12">
           <ul class="list-none">
-            <li class="mb-8">
-              <span class="font-bold mr-4">{loaded_barges}</span>Loaded
-            </li>
-            <li class="mb-8">
-              <span class="font-bold mr-4">{barges_loading}</span>Loading
-            </li>
-            <li>
-              <span class="font-bold mr-4">{barges_unloading}</span>Unloading
-            </li>
+            <DataItem value={loaded_barges} label="Loaded" />
+            <DataItem value={barges_loading} label="Loading" />
+            <DataItem value={barges_unloading} label="Unloading" />
           </ul>
         </div>
         <div class="basis-6/12">
           <ul class="list-none">
-            <li class="mb-8">
-              <span class="font-bold mr-4">{barges_fleeting}</span>Fleeting
-            </li>
-            <li>
-              <span class="font-bold mr-4">{empty_barges}</span>Empty
-            </li>
+            <DataItem value={barges_fleeting} label="Fleeting" />
+            <DataItem value={empty_barges} label="Empty" />
           </ul>
         </div>
       </div>

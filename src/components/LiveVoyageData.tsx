@@ -12,10 +12,8 @@ const LiveVoyageData: Component<LiveVoyageDataProps> = ({
   label,
   data,
 }) => {
-  if (!data) {
-    return null;
-  }
-  const { active_voyages, scheduled_voyages }: MockData = data;
+  const { active_voyages = 0, scheduled_voyages = 0 } =
+    data ?? ({} as MockData);
   return (
     <div class="text-6xl">
       <div class="bg-skyCustom400 p-8 rounded-2xl text-white">
