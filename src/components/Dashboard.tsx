@@ -1,4 +1,4 @@
-import { Component, createMemo, createSignal, onMount } from "solid-js";
+import { Component, createSignal, onMount } from "solid-js";
 import TitleStatus from "~/components/TitleStatus";
 import LiveVoyageData from "~/components/LiveVoyageData";
 import VesselStats from "~/components/VesselStats";
@@ -14,20 +14,8 @@ import Loader from "~/components/Loader";
 import { MockData } from "~/types";
 
 const Dashboard: Component = () => {
-  let blockRef: HTMLDivElement | undefined;
-  const [height, setHeight] = createSignal<number>(0);
   const [data, setData] = createSignal<MockData | null>(null);
   const [loading, setLoading] = createSignal<boolean>(false);
-
-  const calculateHeight = () => {
-    if (blockRef) {
-      const rect = blockRef.getBoundingClientRect();
-      const computedStyle = getComputedStyle(blockRef);
-      const marginTop = parseFloat(computedStyle.marginTop);
-      const marginBottom = parseFloat(computedStyle.marginBottom);
-      setHeight(rect.height + marginTop + marginBottom);
-    }
-  };
 
   const loadData = () => {
     setLoading(true);
@@ -36,18 +24,12 @@ const Dashboard: Component = () => {
       .then((data) => {
         setData(data);
         setLoading(false);
-        // Recalculate height after data is loaded
-        requestAnimationFrame(calculateHeight);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
         setLoading(false);
       });
   };
-
-  onMount(() => {
-    requestAnimationFrame(calculateHeight);
-  });
 
   return (
     <>
@@ -61,18 +43,15 @@ const Dashboard: Component = () => {
         >
           <TitleStatus />
           <div class="flex flex-row space-x-4 mb-4">
-            <div class="basis-6/12 flex-1">
-              <div ref={blockRef} class="mb-4">
+            <div class="basis-6/12 flex-1 items-stretch flex flex-col">
+              <div class="mb-4">
                 <LiveVoyageData
                   data={data()}
                   label={"Scheduled voyages"}
                   labelActive={"Active voyages"}
                 />
               </div>
-              <div
-                class="flex flex-row space-x-4 flex-1"
-                style={{ "min-height": `calc(100% - ${height()}px)` }}
-              >
+              <div class="flex flex-row space-x-4 flex-1">
                 <div class="basis-5/12 items-stretch flex flex-col">
                   <VesselStats
                     className={"mb-4 flex-1"}
