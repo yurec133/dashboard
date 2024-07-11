@@ -16,7 +16,7 @@ const Rates: Component<RatesProps> = ({ data }) => {
 
   return (
     <div class="border border-blackCustom300 bg-grayCustom200 p-8 rounded-2xl text-6xl h-full">
-      <div class="font-bold mb-12">Rates</div>
+      <h2 class="font-bold mb-12">Rates</h2>
       <ul class="list-none">
         <li class="mb-8">
           <div class="text-8xl text-slateCustom700">

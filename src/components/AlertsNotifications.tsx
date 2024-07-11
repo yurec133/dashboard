@@ -3,9 +3,9 @@ import { Component } from "solid-js";
 const AlertsNotifications: Component = () => {
   return (
     <div class="border border-orangeCustom200 bg-orangeCustom100 p-8 rounded-2xl h-full">
-      <h1 class="text-6xl font-bold text-slateCustom700 mb-16">
+      <h2 class="text-6xl font-bold text-slateCustom700 mb-16">
         Alerts & Notifications
-      </h1>
+      </h2>
       <ul class="list-none bulletRing">
         <li class="mb-7">
           <div class="text-5xl text-slateCustom600 font-custom">
