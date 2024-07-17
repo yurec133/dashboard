@@ -19,17 +19,24 @@ const Dashboard: Component = () => {
 
   const loadData = () => {
     setLoading(true);
-    fetch("/api/voyage-data")
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      });
+    setTimeout(() => {
+      fetch("/api/voyage-data")
+        .then((response) => response.json())
+        .then((data) => {
+          setData(data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          setLoading(false);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }, 1000);
   };
+
+  onMount(loadData);
 
   return (
     <>
@@ -38,35 +45,35 @@ const Dashboard: Component = () => {
         <Loader />
       ) : (
         <div
-          class="border border-grayCustom400 px-8 py-12"
+          class='border border-grayCustom400 px-8 py-12'
           style={{ width: "2515px" }}
         >
           <TitleStatus />
-          <div class="flex flex-row space-x-4 mb-4">
-            <div class="basis-6/12 flex-1 items-stretch flex flex-col">
-              <div class="mb-4">
+          <div class='flex flex-row space-x-4 mb-4'>
+            <div class='basis-6/12 flex-1 items-stretch flex flex-col'>
+              <div class='mb-4'>
                 <LiveVoyageData
                   data={data()}
                   label={"Scheduled voyages"}
                   labelActive={"Active voyages"}
                 />
               </div>
-              <div class="flex flex-row space-x-4 flex-1">
-                <div class="basis-5/12 items-stretch flex flex-col">
+              <div class='flex flex-row space-x-4 flex-1'>
+                <div class='basis-5/12 items-stretch flex flex-col'>
                   <VesselStats
                     className={"mb-4 flex-1"}
-                    label="Active tugs"
+                    label='Active tugs'
                     count={data()?.active_tugs ?? 0}
                     icon={IconTugBoat}
                   />
                   <VesselStats
                     className={"flex-1"}
-                    label="Active ships"
+                    label='Active ships'
                     count={data()?.active_ships ?? 0}
                     icon={IconShip}
                   />
                 </div>
-                <div class="basis-7/12">
+                <div class='basis-7/12'>
                   <ActiveBarges
                     data={data()}
                     label={"Active barges"}
@@ -75,10 +82,10 @@ const Dashboard: Component = () => {
                 </div>
               </div>
             </div>
-            <div class="basis-3/12 flex-1">
+            <div class='basis-3/12 flex-1'>
               <Rates data={data()} />
             </div>
-            <div class="basis-3/12 flex-1">
+            <div class='basis-3/12 flex-1'>
               <AlertsNotifications />
             </div>
           </div>
